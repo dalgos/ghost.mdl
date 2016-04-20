@@ -34,65 +34,60 @@
     {{ghost_head}}
 </head>
 <body>
-
-    <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
-      <main class="mdl-layout__content">
-        {{! navigation}}
-        
-        {{! Everything else gets inserted here }}
-        {{{body}}}
-        
-        <footer class="site-footer clearfix">
-            <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
-            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
-        </footer>
-        <footer class="mdl-mini-footer">
-          <div class="mdl-mini-footer--left-section">
-            <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
-              <span class="visuallyhidden">Twitter</span>
-            </button>
-            <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
-              <span class="visuallyhidden">Facebook</span>
-            </button>
-            <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
-              <span class="visuallyhidden">Google Plus</span>
-            </button>
-          </div>
-          <div class="mdl-mini-footer--right-section">
-            <button class="mdl-mini-footer--social-btn social-btn__share">
-              <i class="material-icons" role="presentation">share</i>
-              <span class="visuallyhidden">share</span>
-            </button>
-          </div>
-        </footer>
+  <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+    
+    {{{body}}}
+    
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer--left-section">
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
+          <span class="visuallyhidden">Twitter</span>
+        </button>
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
+          <span class="visuallyhidden">Facebook</span>
+        </button>
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
+          <span class="visuallyhidden">Google Plus</span>
+        </button>
       </div>
-      <div class="mdl-layout__obfuscator"></div>
-    </div>
+      <div class="mdl-mini-footer--right-section">
+        <button class="mdl-mini-footer--social-btn social-btn__share">
+          <i class="material-icons" role="presentation">share</i>
+          <span class="visuallyhidden">share</span>
+        </button>
+      </div>
+    </footer>
+    <div class="mdl-layout__obfuscator"></div>
+  </div>
 
-    {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <script>
-      Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-        var link = el.querySelector('a');
-        if(!link) {
-          return;
-        }
-        var target = link.getAttribute('href');
-        if(!target) {
-          return;
-        }
-        el.addEventListener('click', function() {
-          location.href = target;
-        });
+  {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+      var link = el.querySelector('a');
+      if(!link) {
+        return;
+      }
+      var target = link.getAttribute('href');
+      if(!target) {
+        return;
+      }
+      el.addEventListener('click', function() {
+        location.href = target;
       });
-    </script>
-    {{! Ghost outputs important scripts and data with this tag }}
-    {{ghost_foot}}
+    });
+  </script>
+  {{! Ghost outputs important scripts and data with this tag }}
+  {{ghost_foot}}
 
-    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
-    {{! The main JavaScript file for Casper }}
-    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+  <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+  {{! The main JavaScript file for Casper }}
+  <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
 
 </body>
 </html>
