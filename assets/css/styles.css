@@ -113,7 +113,7 @@ body .demo-blog {
 .demo-blog .mdl-card__media ~ .mdl-card__supporting-text {
   min-height: 64px;
 }
-.demo-blog .mdl-card__supporting-text:not(:last-child) {
+.demo-blog .mdl-card__supporting-text {
   box-sizing: border-box;
   min-height: 76px;
 }
@@ -303,7 +303,8 @@ body .demo-blog {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.demo-blog--blogpost .meta + .mdl-card__supporting-text p {
+.demo-blog--blogpost .meta + .mdl-card__supporting-text p,
+.demo-blog--blogpost .meta + .mdl-card__supporting-text img {
   max-width: 512px;
   margin: 16px auto;
   font-size: 16px;

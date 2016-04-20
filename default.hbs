@@ -48,36 +48,7 @@
     {{ghost_head}}
 </head>
 <body>
-  <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
-    <main id="content" class="mdl-layout__content" role="main">
-      {{{body}}}
-    
-      {{!-- <footer class="site-footer clearfix">
-          <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
-          <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
-      </footer> --}}
-      <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer--left-section">
-          <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
-            <span class="visuallyhidden">Twitter</span>
-          </button>
-          <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
-            <span class="visuallyhidden">Facebook</span>
-          </button>
-          <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
-            <span class="visuallyhidden">Google Plus</span>
-          </button>
-        </div>
-        <div class="mdl-mini-footer--right-section">
-          <button class="mdl-mini-footer--social-btn social-btn__share">
-            <i class="material-icons" role="presentation">share</i>
-            <span class="visuallyhidden">share</span>
-          </button>
-        </div>
-      </footer>
-    </main>
-    <div class="mdl-layout__obfuscator"></div>
-  </div>
+  {{{body}}}
 
   {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

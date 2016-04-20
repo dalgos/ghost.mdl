@@ -19,8 +19,13 @@
 </header> --}}
 
 {{! The main content area on the homepage }}
-
-<div class="demo-blog__posts mdl-grid">
-  {{! The tag below includes the post loop - partials/loop.hbs }}
-  {{> "loop"}}
+<div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+  <main id="content" class="mdl-layout__content" role="main">
+    <div class="demo-blog__posts mdl-grid">
+      {{! The tag below includes the post loop - partials/loop.hbs }}
+      {{> "loop"}}
+    </div>
+  </main>
+  {{> "footer"}}
+  <div class="mdl-layout__obfuscator"></div>
 </div>

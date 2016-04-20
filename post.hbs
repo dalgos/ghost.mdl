@@ -5,132 +5,69 @@
 
 {{! Everything inside the #post tags pulls data from the post }}
 {{#post}}
+<div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+  <main class="mdl-layout__content">
+    <div class="demo-back">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="{{@blog.url}}" title="go back" role="button">
+        <i class="material-icons" role="presentation">arrow_back</i>
+      </a>
+    </div>
 
-<div class="demo-back">
-  <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="index.html" title="go back" role="button">
-    <i class="material-icons" role="presentation">arrow_back</i>
-  </a>
+    <div class="demo-blog__posts mdl-grid">
+      <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url('{{image}}')">
+          <h3>{{title}}</h3>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+          <div class="minilogo">
+            {{#if author.image}}<img src="{{author.image}}" alt="{{author.name}}" nopin="nopin" style="width:100%;" />{{/if}}
+          </div>
+          <div>
+            <strong>{{name}}</strong>
+            <span>{{date format="DD MMMM YYYY"}}</span>
+          </div>
+          <div class="section-spacer"></div>
+          <div class="meta__favorites">
+            425 <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+          </div>
+          <div>
+            <i class="material-icons" role="presentation">bookmark</i>
+            <span class="visuallyhidden">bookmark</span>
+          </div>
+          <div>
+            <i class="material-icons" role="presentation">share</i>
+            <span class="visuallyhidden">share</span>
+          </div>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+          {{content}}
+        </div>
+      </div>
+      
+      <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+        {{#next_post}}
+        <a href="{{url}}" class="demo-nav__button">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+            <i class="material-icons">arrow_back</i>
+          </button>
+          Newer
+        </a>
+        {{/next_post}}
+        <div class="section-spacer"></div>
+        {{#prev_post}}
+        <a href="{{url}}" class="demo-nav__button">
+          Older
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+            <i class="material-icons">arrow_forward</i>
+          </button>
+        </a>
+        {{/prev_post}}
+      </nav>
+    </div>
+  </main>
+  {{> "footer"}}
+  <div class="mdl-layout__obfuscator"></div>
 </div>
-
-<div class="demo-blog__posts mdl-grid">
-  <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__media mdl-color-text--grey-50">
-      <h3>{{title}}</h3>
-    </div>
-    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-      <div class="minilogo"></div>
-      <div>
-        <strong>{{name}}</strong>
-        <span>{{date format="DD MMMM YYYY"}}</span>
-      </div>
-      <div class="section-spacer"></div>
-      <div class="meta__favorites">
-        425 <i class="material-icons" role="presentation">favorite</i>
-        <span class="visuallyhidden">favorites</span>
-      </div>
-      <div>
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-      </div>
-      <div>
-        <i class="material-icons" role="presentation">share</i>
-        <span class="visuallyhidden">share</span>
-      </div>
-    </div>
-    <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-      {{content}}
-    </div>
-  </div>
-</div>
-
-{{!-- <header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}">
-    <nav class="main-nav {{#if image}}overlay{{/if}} clearfix">
-        {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
-        {{#if @blog.navigation}}
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-        {{/if}}
-    </nav>
-</header>
-
-<main class="content" role="main">
-    <article class="{{post_class}}">
-
-        <header class="post-header">
-            <h1 class="post-title">{{title}}</h1>
-            <section class="post-meta">
-                <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
-            </section>
-        </header>
-
-        <section class="post-content">
-            {{content}}
-        </section>
-
-        <footer class="post-footer">
-
-        {{! Everything inside the #author tags pulls data from the author }}
-        {{#author}}
-
-            {{#if image}}
-            <figure class="author-image">
-                <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
-            </figure>
-            {{/if}}
-
-            <section class="author">
-                <h4><a href="{{url}}">{{name}}</a></h4>
-
-                {{#if bio}}
-                    <p>{{bio}}</p>
-                {{else}}
-                    <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                {{/if}}
-                <div class="author-meta">
-                    {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
-                    {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
-                </div>
-            </section>
-
-        {{/author}}
-
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-            </section>
-
-        </footer>
-
-    </article>
-</main> --}}
-
-<aside class="read-next">
-    {{#next_post}}
-    <a class="read-next-story {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}" href="{{url}}">
-        <section class="post">
-            <h2>{{title}}</h2>
-            <p>{{excerpt words="19"}}&hellip;</p>
-        </section>
-    </a>
-    {{/next_post}}
-    {{#prev_post}}
-    <a class="read-next-story prev {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}" href="{{url}}">
-        <section class="post">
-            <h2>{{title}}</h2>
-            <p>{{excerpt words="19"}}&hellip;</p>
-        </section>
-    </a>
-    {{/prev_post}}
-</aside>
 
 {{/post}}
