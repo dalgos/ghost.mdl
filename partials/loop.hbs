@@ -19,14 +19,14 @@
         <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
     </footer>
 </article> --}}
-<div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col {{post_class}}">
-  <div class="mdl-card__media mdl-color-text--grey-50">
+<div class="mdl-card mdl-cell mdl-cell--12-col {{post_class}}">
+  <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url('{{image}}')">
     <h3><a href="{{url}}">{{{title}}}</a></h3>
   </div>
   <div class="mdl-color-text--grey-600 mdl-card__supporting-text">{{excerpt words="52"}}</div>
   <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
     {{!-- <div class="minilogo"></div> --}}
-    {{#if author.image}}<div class="minilogo"><img src="{{author.image}}" alt="{{author.name}}" nopin="nopin" /></div>{{/if}}
+    {{#if author.image}}<div class="minilogo"><img src="{{author.image}}" alt="{{author.name}}" nopin="nopin" style="width:100%;" /></div>{{/if}}
     <div>
       <strong>{{author.name}}</strong>
       <span>{{date format="DD MMMM YYYY"}}</span>
